@@ -124,9 +124,18 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 .sheet-wf{width:100%;height:52px;border-radius:3px;overflow:hidden;margin-bottom:12px;}
 #sheetWaveC{width:100%;height:100%;display:block;}
 .sheet-quote{font-family:var(--fg);font-style:italic;font-size:18px;line-height:1.65;color:rgba(186,178,220,.78);border-left:2px solid var(--rim);padding-left:12px;margin-bottom:16px;}
-.play-row{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--rim);border-radius:3px;cursor:pointer;background:rgba(8,18,32,.8);margin-bottom:8px;transition:border-color .25s;}
+.play-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--rim);border-radius:3px;cursor:pointer;background:rgba(8,18,32,.8);margin-bottom:8px;transition:border-color .25s,box-shadow .25s;overflow:visible;}
 .play-row:active{border-color:var(--soft);}
-.play-ic{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.play-row.playing{border-color:rgba(var(--sheet-rgb,255,107,191),.56);box-shadow:0 0 24px rgba(var(--sheet-rgb,255,107,191),.12),inset 0 0 18px rgba(var(--sheet-rgb,255,107,191),.045);}
+.play-ic{--play-scale:1;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;isolation:isolate;border:1.5px solid rgba(var(--sheet-rgb,255,107,191),.62);background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.96) 0 13%,rgba(255,255,255,.46) 21%,rgba(var(--sheet-rgb,255,107,191),.92) 48%,rgba(var(--sheet-rgb,255,107,191),.58) 100%);box-shadow:0 0 22px 8px rgba(var(--sheet-rgb,255,107,191),.28),0 8px 18px rgba(0,0,0,.26),inset 0 0 10px rgba(255,255,255,.28),inset 0 -10px 16px rgba(0,0,0,.13);transform:scale(var(--play-scale));transition:transform .08s linear,box-shadow .18s,border-color .18s;}
+.play-ic::before{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid rgba(var(--sheet-rgb,255,107,191),.3);box-shadow:0 0 22px rgba(var(--sheet-rgb,255,107,191),.16);opacity:.68;z-index:-1;pointer-events:none;}
+.play-ic::after{content:"";position:absolute;inset:-17px;border-radius:50%;border:1.5px solid rgba(var(--sheet-rgb,255,107,191),.42);opacity:0;z-index:-2;pointer-events:none;}
+.play-ic svg{width:15px;height:15px;position:relative;z-index:1;filter:drop-shadow(0 0 8px rgba(255,255,255,.48));}
+.play-row.playing .play-ic{border-color:rgba(var(--sheet-rgb,255,107,191),.84);box-shadow:0 0 30px 12px rgba(var(--sheet-rgb,255,107,191),.34),0 10px 22px rgba(0,0,0,.24),inset 0 0 12px rgba(255,255,255,.34),inset 0 -10px 16px rgba(0,0,0,.1);}
+.play-row.playing .play-ic::before{animation:playHalo 1.15s ease-in-out infinite;}
+.play-row.playing .play-ic::after{animation:playRipple 1.35s ease-out infinite;}
+@keyframes playHalo{0%,100%{transform:scale(.94);opacity:.34;}50%{transform:scale(1.1);opacity:.78;}}
+@keyframes playRipple{0%{transform:scale(.68);opacity:.62;}72%{opacity:.18;}100%{transform:scale(1.42);opacity:0;}}
 .play-brs{display:flex;gap:2px;align-items:center;height:18px;flex:1;}
 .pbar{width:3px;border-radius:2px;height:4px;transition:height .15s;}
 .play-lbl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(110,150,200,.72);}
@@ -485,7 +494,7 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 
 <!-- S INTRO PROJECT INTRODUCTION -->
 <div class="screen active" id="sIntro">
-  <div class="sbar"><span>9:41</span><span style="letter-spacing:2px">●●●</span></div>
+  <div class="sbar"><span aria-hidden="true"></span><span style="letter-spacing:2px">●●●</span></div>
   <div class="intro-glow" style="width:280px;height:280px;background:rgba(255,107,191,.055);top:-80px;left:-110px;"></div>
   <div class="intro-glow" style="width:340px;height:340px;background:rgba(176,208,192,.07);bottom:-80px;right:-120px;"></div>
 
@@ -539,7 +548,7 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 
 <!-- S0 LANDING -->
 <div class="screen" id="s0">
-  <div class="sbar"><span>9:41</span><span style="letter-spacing:2px">●●●</span></div>
+  <div class="sbar"><span aria-hidden="true"></span><span style="letter-spacing:2px">●●●</span></div>
   <!-- Ambient -->
   <div class="land-orb" style="width:260px;height:260px;background:rgba(255,107,191,.05);top:-70px;left:-80px;"></div>
   <div class="land-orb" style="width:320px;height:320px;background:rgba(176,208,192,.065);bottom:50px;right:-100px;"></div>
@@ -705,7 +714,7 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 
 <!-- S1 MEMORY TREE -->
 <div class="screen" id="s1">
-  <div class="sbar"><span>9:41</span><span style="letter-spacing:2px">●●●</span></div>
+  <div class="sbar"><span aria-hidden="true"></span><span style="letter-spacing:2px">●●●</span></div>
   <div class="tree-header">
     <button class="back" onclick="go('sIntro')">← Home</button>
     <div class="tree-title-block"><div class="tree-h">Memory Tree</div><div class="tree-s">Each orb holds a memory of this place</div></div>
@@ -752,7 +761,7 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 
 <!-- S3 RECORD -->
 <div class="screen" id="s3">
-  <div class="sbar"><span>9:41</span><span>●●●</span></div>
+  <div class="sbar"><span aria-hidden="true"></span><span>●●●</span></div>
   <div class="rec-hd"><button class="back" onclick="go('s1')">← Tree</button><span style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">P4 · Record</span></div>
   <div class="rec-pr"><div class="rec-ph">What do you remember<br>about this place?</div><div class="rec-ps">Your voice frequency determines your colour.</div></div>
   <div class="wave-wrap"><canvas id="waveC"></canvas></div>
@@ -766,7 +775,7 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 
 <!-- S4 ANALYSIS -->
 <div class="screen" id="s4">
-  <div class="sbar"><span>9:41</span><span>●●●</span></div>
+  <div class="sbar"><span aria-hidden="true"></span><span>●●●</span></div>
   <div class="ana-hd">
     <div class="ana-h" id="anaH">Analysing your memory…</div>
     <div class="ana-s" id="anaS">Reading frequency signature</div>
@@ -791,7 +800,7 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 
 <!-- S5 PRIVACY / PUBLIC CHOICE -->
 <div class="screen" id="s5">
-  <div class="sbar"><span>9:41</span><span>●●●</span></div>
+  <div class="sbar"><span aria-hidden="true"></span><span>●●●</span></div>
   <div class="sig-hd"><button class="back" onclick="go('s3')">← Re-record</button><span class="sig-tag">Privacy Choice</span></div>
   <div class="sig-titles"><div class="sig-h">Keep it public?</div><div class="sig-sub">Public adds the recording to the memory tree. Private raises only the firework.</div></div>
   <div class="sig-canvas-wrap"><canvas id="radC" width="236" height="236"></canvas></div>
@@ -809,7 +818,7 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 
 <!-- S6 REPLAY VOICE -->
 <div class="screen" id="s6">
-  <div class="sbar"><span>9:41</span><span>●●●</span></div>
+  <div class="sbar"><span aria-hidden="true"></span><span>●●●</span></div>
   <div class="replay-hd"><button class="back" onclick="go('s5')">← Privacy</button><span class="replay-tag">Place Memory</span></div>
   <div class="replay-main">
     <div class="replay-title">Replay<br>& place it</div>
@@ -841,7 +850,7 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 
 <!-- S7 LAUNCH -->
 <div class="screen" id="s7">
-  <div class="sbar"><span>9:41</span><span>●●●</span></div>
+  <div class="sbar"><span aria-hidden="true"></span><span>●●●</span></div>
   <div class="lbloom" id="lBloom"></div>
   <div class="lbw"><div class="lbeam" id="lBeam"></div><div class="ldot" id="lDot"></div></div>
   <div class="launch-h">Your light<br>is rising.</div>
@@ -1074,14 +1083,18 @@ function openSheet(){
   // Play bars
   const cont=document.getElementById('shPlayBrs');cont.innerHTML='';
   for(let i=0;i<18;i++){const bar=document.createElement('div');bar.className='pbar';bar.style.background=`rgba(${r},${g},${b},.28)`;cont.appendChild(bar);}
-  document.getElementById('shPlayIc').style.background=col.hex;
+  const playIc=document.getElementById('shPlayIc');
+  playIc.style.setProperty('--play-scale','1');
   document.getElementById('shPlayLbl').textContent='Listen to memory';
+  document.querySelector('.play-row')?.classList.remove('playing');
   document.getElementById('memSheet').classList.add('open');
   shPlaying=false;
   // re-enable orb click after sheet closes
 }
 function closeSheet(){
   document.getElementById('memSheet').classList.remove('open');
+  document.querySelector('.play-row')?.classList.remove('playing');
+  document.getElementById('shPlayIc')?.style.setProperty('--play-scale','1');
   if(shPlaying){shPlaying=false;cancelAnimationFrame(shPlayAF);}
   // re-enable tree click
   setTimeout(()=>{
@@ -1093,22 +1106,35 @@ function toggleSheetPlay(){
   const m=selMem;const col=COLORS[m.cid];const{r,g,b}=hexRGB(col.hex);
   const bars=[...document.querySelectorAll('#shPlayBrs .pbar')];
   const lbl=document.getElementById('shPlayLbl');
+  const row=document.querySelector('.play-row');
+  const orb=document.getElementById('shPlayIc');
   if(shPlaying){
     // Stop
     shPlaying=false;
     cancelAnimationFrame(shPlayAF);
     window.speechSynthesis.cancel();
     bars.forEach(b2=>{b2.style.height='4px';b2.style.background=`rgba(${r},${g},${b},.28)`;});
+    row?.classList.remove('playing');
+    orb?.style.setProperty('--play-scale','1');
     lbl.textContent='Listen to memory';
     return;
   }
   // Start
   shPlaying=true;
+  row?.classList.add('playing');
   lbl.textContent='Playing…';
   // Animate bars
   cancelAnimationFrame(shPlayAF);
   function ab(ts){if(!shPlaying)return;
-    bars.forEach((b2,i)=>{const h=4+Math.abs(Math.sin(ts*.004+i*.4+m.seed*4))*14;b2.style.height=h+'px';b2.style.background=col.hex;});
+    let energy=0;
+    bars.forEach((b2,i)=>{
+      const v=Math.abs(Math.sin(ts*.004+i*.4+m.seed*4));
+      energy+=v;
+      const h=4+v*14;
+      b2.style.height=h+'px';b2.style.background=col.hex;
+    });
+    energy=energy/Math.max(1,bars.length);
+    orb?.style.setProperty('--play-scale',(1.02+energy*.12).toFixed(3));
     shPlayAF=requestAnimationFrame(ab);}
   shPlayAF=requestAnimationFrame(ab);
   // Speak the quote using Web Speech API with age/gender-matched voice
@@ -1137,12 +1163,14 @@ function toggleSheetPlay(){
     utt.onend=()=>{
       shPlaying=false;cancelAnimationFrame(shPlayAF);
       bars.forEach(b2=>{b2.style.height='4px';b2.style.background=`rgba(${r},${g},${b},.28)`;});
+      row?.classList.remove('playing');
+      orb?.style.setProperty('--play-scale','1');
       lbl.textContent='Listen to memory';
     };
     window.speechSynthesis.speak(utt);
   } else {
     // Fallback: no TTS available, just animate for dur seconds
-    setTimeout(()=>{shPlaying=false;cancelAnimationFrame(shPlayAF);bars.forEach(b2=>{b2.style.height='4px';b2.style.background=`rgba(${r},${g},${b},.28)`;});lbl.textContent='Listen to memory';},m.dur*1000);
+    setTimeout(()=>{shPlaying=false;cancelAnimationFrame(shPlayAF);bars.forEach(b2=>{b2.style.height='4px';b2.style.background=`rgba(${r},${g},${b},.28)`;});row?.classList.remove('playing');orb?.style.setProperty('--play-scale','1');lbl.textContent='Listen to memory';},m.dur*1000);
   }
 }
 
