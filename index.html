@@ -310,12 +310,17 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 .drop-tree{width:100%;height:126px;border:1px dashed rgba(90,180,255,.34);border-radius:4px;background:radial-gradient(circle at 50% 24%,rgba(90,180,255,.08),transparent 42%),linear-gradient(180deg,rgba(6,15,28,.72),rgba(3,8,17,.9));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;position:relative;overflow:hidden;transition:border-color .25s,box-shadow .25s,background .25s;}
 .drop-tree.hot{border-color:rgba(var(--replay-rgb,255,107,191),.72);box-shadow:0 0 28px rgba(var(--replay-rgb,255,107,191),.18);background:radial-gradient(circle at 50% 28%,rgba(var(--replay-rgb,255,107,191),.13),transparent 48%),linear-gradient(180deg,rgba(24,48,128,.86),rgba(16,38,111,.94));}
 .drop-tree.placed{border-color:rgba(var(--replay-rgb,77,221,184),.68);box-shadow:0 0 30px rgba(var(--replay-rgb,77,221,184),.18);background:radial-gradient(circle at var(--placed-x,50%) var(--placed-y,34%),rgba(var(--replay-rgb,255,107,191),.18),transparent 35%),linear-gradient(180deg,rgba(24,48,128,.78),rgba(16,38,111,.92));}
-.drop-tree.stage-open{position:absolute;inset:0 0 154px 0;width:auto;height:auto;border:none;border-radius:0;background:linear-gradient(180deg,rgba(24,48,128,.06),rgba(24,48,128,.18) 52%,rgba(16,38,111,.78)),url('memory_tree_reference.png') center center/cover no-repeat;box-shadow:inset 0 -90px 95px rgba(16,38,111,.82),0 0 38px rgba(var(--replay-rgb,255,107,191),.2);z-index:24;animation:treeStageReveal .42s ease-out both;}
-.drop-tree.stage-open.hot{background:linear-gradient(180deg,rgba(24,48,128,.02),rgba(24,48,128,.12) 48%,rgba(16,38,111,.74)),radial-gradient(circle at 50% 34%,rgba(var(--replay-rgb,255,107,191),.18),transparent 36%),url('memory_tree_reference.png') center center/cover no-repeat;}
-.drop-tree.stage-open.placed{background:linear-gradient(180deg,rgba(24,48,128,.02),rgba(24,48,128,.13) 48%,rgba(16,38,111,.74)),radial-gradient(circle at var(--placed-x,50%) var(--placed-y,34%),rgba(var(--replay-rgb,255,107,191),.32),transparent 18%),url('memory_tree_reference.png') center center/cover no-repeat;}
-.drop-tree.stage-open .drop-tree-visual{display:none;}
-.drop-tree.stage-open .drop-tree-title{position:absolute;left:24px;bottom:42px;font-size:28px;color:#fff;text-shadow:0 0 22px rgba(0,0,0,.9),0 0 18px rgba(var(--replay-rgb,255,107,191),.32);}
-.drop-tree.stage-open .drop-tree-hint{position:absolute;left:26px;bottom:24px;color:rgba(230,240,255,.86);text-shadow:0 0 16px rgba(0,0,0,.9);letter-spacing:2px;}
+.drop-tree.stage-open{position:absolute;inset:0 0 154px 0;width:auto;height:auto;border:none;border-radius:0;background:radial-gradient(circle at 50% 22%,rgba(176,208,192,.12),transparent 42%),linear-gradient(180deg,#183080 0%,#10266f 100%);box-shadow:inset 0 -96px 104px rgba(16,38,111,.84),0 0 38px rgba(var(--replay-rgb,255,107,191),.2);z-index:24;animation:treeStageReveal .42s ease-out both;}
+.drop-tree.stage-open::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 18%,rgba(176,208,192,.42) 0 1px,transparent 2px),radial-gradient(circle at 72% 14%,rgba(176,208,192,.34) 0 1px,transparent 2px),radial-gradient(circle at 88% 38%,rgba(176,208,192,.28) 0 1px,transparent 2px),radial-gradient(circle at 26% 46%,rgba(176,208,192,.22) 0 1px,transparent 2px),radial-gradient(circle at 56% 56%,rgba(176,208,192,.22) 0 1px,transparent 2px);opacity:.8;pointer-events:none;}
+.drop-tree.stage-open.hot{background:radial-gradient(circle at 50% 34%,rgba(var(--replay-rgb,255,107,191),.16),transparent 38%),radial-gradient(circle at 50% 22%,rgba(176,208,192,.12),transparent 42%),linear-gradient(180deg,#183080 0%,#10266f 100%);}
+.drop-tree.stage-open.placed{background:radial-gradient(circle at var(--placed-x,50%) var(--placed-y,34%),rgba(var(--replay-rgb,255,107,191),.28),transparent 20%),radial-gradient(circle at 50% 22%,rgba(176,208,192,.12),transparent 42%),linear-gradient(180deg,#183080 0%,#10266f 100%);}
+.drop-tree.stage-open .drop-tree-visual{display:block;inset:88px 0 116px;opacity:1;filter:drop-shadow(0 0 18px rgba(176,208,192,.1));}
+.drop-tree.stage-open .drop-tree-visual svg{height:100%;width:100%;preserveAspectRatio:xMidYMax meet;}
+.drop-tree.stage-open .drop-tree-branch{stroke:rgba(92,74,42,.92);stroke-width:9;filter:drop-shadow(0 0 8px rgba(255,212,78,.08));}
+.drop-tree.stage-open .drop-tree-twig{stroke:rgba(92,74,42,.78);stroke-width:4.5;filter:drop-shadow(0 0 7px rgba(255,212,78,.06));}
+.drop-tree.stage-open .tree-existing-orb{opacity:.95;}
+.drop-tree.stage-open .drop-tree-title{position:absolute;left:28px;bottom:42px;font-size:30px;color:#d9eadf;text-shadow:0 0 22px rgba(176,208,192,.22),0 0 18px rgba(var(--replay-rgb,255,107,191),.22);}
+.drop-tree.stage-open .drop-tree-hint{position:absolute;left:30px;bottom:24px;color:rgba(var(--replay-rgb,255,107,191),.9);text-shadow:0 0 14px rgba(var(--replay-rgb,255,107,191),.2);letter-spacing:2px;}
 @keyframes treeStageReveal{from{opacity:0;transform:scale(1.025);filter:blur(6px);}to{opacity:1;transform:scale(1);filter:blur(0);}}
 .drop-tree-visual{position:absolute;inset:6px 12px 18px;opacity:.42;transition:opacity .35s,filter .35s;}
 .drop-tree.hot .drop-tree-visual,.drop-tree.placed .drop-tree-visual{opacity:.78;filter:drop-shadow(0 0 10px rgba(var(--replay-rgb,90,180,255),.14));}
@@ -1012,15 +1017,21 @@ body,.phone,button,input,textarea{
     <button class="replay-btn" id="replayBtn" type="button" onclick="toggleReplay()">Play</button>
     <div class="drop-tree" id="dropTree">
       <div class="drop-tree-visual" aria-hidden="true">
-        <svg viewBox="0 0 300 112" preserveAspectRatio="none">
-          <path class="drop-tree-branch" d="M150 108 V70 M150 70 L92 28 M150 70 L208 26"/>
-          <path class="drop-tree-twig" d="M92 28 L58 10 M92 28 L112 8 M208 26 L184 8 M208 26 L242 10 M150 70 L135 34 M150 70 L166 34"/>
-          <circle class="tree-existing-orb" cx="58" cy="10" r="5"/>
-          <circle class="tree-existing-orb" cx="112" cy="8" r="5"/>
-          <circle class="tree-existing-orb" cx="135" cy="34" r="4"/>
-          <circle class="tree-existing-orb" cx="166" cy="34" r="4"/>
-          <circle class="tree-existing-orb" cx="184" cy="8" r="5"/>
-          <circle class="tree-existing-orb" cx="242" cy="10" r="5"/>
+        <svg viewBox="0 0 300 420" preserveAspectRatio="xMidYMax meet">
+          <path class="drop-tree-branch" d="M150 414 Q150 336 150 260 M150 260 Q122 214 99 191 M150 260 Q178 214 201 191"/>
+          <path class="drop-tree-twig" d="M99 191 Q68 164 44 139 M99 191 Q86 126 80 92 M99 191 Q112 158 126 143 M201 191 Q188 158 174 143 M201 191 Q214 126 220 92 M201 191 Q232 164 257 139 M44 139 Q30 158 23 181 M44 139 Q42 121 43 108 M80 92 Q66 72 63 58 M80 92 Q96 58 105 46 M126 143 Q112 128 106 120 M126 143 Q130 110 134 96 M174 143 Q170 110 166 96 M174 143 Q188 128 193 120 M220 92 Q204 58 195 46 M220 92 Q234 72 237 58 M257 139 Q258 121 257 108 M257 139 Q270 158 277 181"/>
+          <circle class="tree-existing-orb" cx="23" cy="181" r="15"/>
+          <circle class="tree-existing-orb" cx="43" cy="108" r="16"/>
+          <circle class="tree-existing-orb" cx="63" cy="58" r="17"/>
+          <circle class="tree-existing-orb" cx="105" cy="46" r="17"/>
+          <circle class="tree-existing-orb" cx="106" cy="120" r="14"/>
+          <circle class="tree-existing-orb" cx="134" cy="96" r="15"/>
+          <circle class="tree-existing-orb" cx="166" cy="96" r="15"/>
+          <circle class="tree-existing-orb" cx="193" cy="120" r="14"/>
+          <circle class="tree-existing-orb" cx="195" cy="46" r="17"/>
+          <circle class="tree-existing-orb" cx="237" cy="58" r="17"/>
+          <circle class="tree-existing-orb" cx="257" cy="108" r="16"/>
+          <circle class="tree-existing-orb" cx="277" cy="181" r="15"/>
         </svg>
       </div>
       <div class="drop-tree-title">Memory Tree</div>
@@ -1838,7 +1849,7 @@ function setupReplayDrag(){
       const hot=stageOpen||(ev.clientX>=r.left&&ev.clientX<=r.right&&ev.clientY>=r.top&&ev.clientY<=r.bottom);
       if(hot){
         drop.classList.add('hot','stage-open');
-        drop.querySelector('.drop-tree-hint').textContent='Drag onto the reference tree';
+        drop.querySelector('.drop-tree-hint').textContent='Drag onto the memory tree';
         const now=performance.now();
         if(now-lastTrail>34){
           spawnVoiceTrail(drop, ev.clientX, ev.clientY);
@@ -1908,8 +1919,9 @@ function placeVoiceOrbOnTree(drop, clientX, clientY){
   const stageOpen=drop.classList.contains('stage-open');
   const targets=stageOpen
     ? [
-        {x:37,y:27},{x:44,y:23},{x:52,y:29},{x:59,y:24},{x:65,y:29},
-        {x:33,y:39},{x:43,y:36},{x:50,y:35},{x:58,y:36},{x:68,y:40}
+        {x:7.6,y:43},{x:14.2,y:25.8},{x:21,y:13.8},{x:35,y:11},
+        {x:35.5,y:28.5},{x:44.8,y:22.8},{x:55.2,y:22.8},{x:64.5,y:28.5},
+        {x:65,y:11},{x:79,y:13.8},{x:85.8,y:25.8},{x:92.4,y:43}
       ]
     : [
         {x:19,y:18},{x:37,y:16},{x:45,y:36},{x:55,y:36},{x:61,y:16},{x:81,y:18},
