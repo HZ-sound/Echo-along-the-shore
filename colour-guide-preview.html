@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>Colour Meaning Mockup</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,300;1,400&family=DM+Mono:wght@300;400&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --ui-blue:#183080;
@@ -16,8 +16,8 @@
   --yellow:#FFD44E;
   --blue:#5AB4FF;
   --white:#F0F2FF;
-  --fg:'Cormorant Garamond',serif;
-  --fm:'DM Mono',monospace;
+  --fg:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --fm:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -34,19 +34,19 @@ body{
 .g2{width:300px;height:300px;background:rgba(255,107,191,.08);left:-160px;bottom:40px}
 .sbar{height:52px;padding:22px 26px 0;display:flex;justify-content:space-between;font-size:11px;color:rgba(176,208,192,.58)}
 .dots{letter-spacing:2px}
-.top{padding:24px 28px 0;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.top{width:100%;padding:24px 28px 0;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
 .back,.step{border:0;background:transparent;color:rgba(232,245,238,.96);font-family:var(--fm);letter-spacing:2.4px;font-size:13px;text-transform:uppercase}
 .step{color:rgba(176,208,192,.7);font-size:9px}
-.hero{padding:32px 28px 0;text-align:center;position:relative;z-index:1}
+.hero{width:100%;padding:32px 28px 0;text-align:center;position:relative;z-index:1}
 .kicker{font-size:9px;letter-spacing:2.8px;text-transform:uppercase;color:rgba(176,208,192,.72);margin-bottom:12px}
 .title{
-  font-family:var(--fg);font-style:italic;font-weight:300;font-size:40px;line-height:1.04;
+  font-family:var(--fg);font-style:normal;font-weight:300;font-size:34px;line-height:1.08;
   color:#d9eadf;text-shadow:0 0 22px rgba(176,208,192,.16);
 }
-.sub{font-size:10.5px;line-height:1.7;letter-spacing:.35px;color:rgba(190,224,212,.9);margin:14px auto 0;max-width:314px}
-.grid{position:relative;z-index:1;padding:20px 24px 0;display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.sub{font-size:11px;line-height:1.62;letter-spacing:.01em;color:rgba(190,224,212,.9);margin:14px auto 0;max-width:314px}
+.grid{width:100%;position:relative;z-index:1;padding:20px 24px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:11px}
 .card{
-  min-height:144px;border:1px solid var(--rim);border-radius:8px;padding:13px 13px 12px;
+  min-width:0;min-height:144px;border:1px solid var(--rim);border-radius:8px;padding:13px 13px 12px;
   background:linear-gradient(180deg,rgba(176,208,192,.08),rgba(16,38,111,.38));
   box-shadow:inset 0 0 24px rgba(176,208,192,.035),0 0 24px rgba(0,0,0,.1);
 }
@@ -60,12 +60,13 @@ body{
   background:rgba(255,255,255,.75);filter:blur(2px);
 }
 .name{
-  font-family:var(--fg);font-style:italic;font-size:25px;line-height:.96;color:var(--c);
+  font-family:var(--fg);font-style:normal;font-weight:500;font-size:24px;line-height:1;color:var(--c);
   text-shadow:0 0 16px color-mix(in srgb,var(--c),transparent 70%);
 }
-.tone{font-size:7.5px;letter-spacing:1.8px;text-transform:uppercase;color:rgba(176,208,192,.72);margin:6px 0}
-.meaning{font-size:10.2px;line-height:1.48;color:rgba(214,236,228,.94)}
-.note{position:relative;z-index:1;margin:14px 24px 0;padding:11px 14px;border-left:2px solid rgba(176,208,192,.42);color:rgba(190,224,212,.86);font-size:9.7px;line-height:1.5}
+.card[style*="--white"] .name{color:#f0f2ff;text-shadow:0 0 16px rgba(240,242,255,.42);}
+.tone{font-size:7.5px;letter-spacing:1.6px;text-transform:uppercase;color:rgba(176,208,192,.72);margin:6px 0;font-weight:600}
+.meaning{font-size:10.8px;line-height:1.42;color:rgba(224,240,234,.96)}
+.note{position:relative;z-index:1;margin:14px 24px 0;padding:11px 14px;border-left:2px solid rgba(176,208,192,.42);color:rgba(190,224,212,.86);font-size:10px;line-height:1.48}
 .actions{position:relative;margin:18px 24px 0;display:flex;flex-direction:column;gap:9px;z-index:1}
 .btn{
   width:100%;min-height:58px;border-radius:6px;border:1.5px solid rgba(176,208,192,.66);
@@ -80,7 +81,7 @@ body{
 <main class="phone">
   <div class="glow g1"></div>
   <div class="glow g2"></div>
-  <div class="sbar"><span>9:41</span><span class="dots">•••</span></div>
+  <div class="sbar"><span aria-hidden="true"></span><span class="dots">•••</span></div>
   <div class="top">
     <button class="back">← Record</button>
     <div class="step">Colour Guide</div>
