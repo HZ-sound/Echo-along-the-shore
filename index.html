@@ -316,8 +316,8 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 .drop-tree.stage-open.placed{background:radial-gradient(circle at var(--placed-x,50%) var(--placed-y,34%),rgba(var(--replay-rgb,255,107,191),.28),transparent 20%),radial-gradient(circle at 50% 22%,rgba(176,208,192,.12),transparent 42%),linear-gradient(180deg,#183080 0%,#10266f 100%);}
 .drop-tree.stage-open .drop-tree-visual{display:block;inset:88px 0 116px;opacity:1;filter:drop-shadow(0 0 18px rgba(176,208,192,.1));}
 .drop-tree.stage-open .drop-tree-visual svg{height:100%;width:100%;preserveAspectRatio:xMidYMax meet;}
-.drop-tree.stage-open .drop-tree-branch{stroke:rgba(92,74,42,.92);stroke-width:9;filter:drop-shadow(0 0 8px rgba(255,212,78,.08));}
-.drop-tree.stage-open .drop-tree-twig{stroke:rgba(92,74,42,.78);stroke-width:4.5;filter:drop-shadow(0 0 7px rgba(255,212,78,.06));}
+.drop-tree.stage-open .drop-tree-branch{stroke:rgba(92,74,42,.94);stroke-width:12;filter:drop-shadow(0 0 9px rgba(255,212,78,.1));}
+.drop-tree.stage-open .drop-tree-twig{stroke:rgba(92,74,42,.82);stroke-width:6.5;filter:drop-shadow(0 0 8px rgba(255,212,78,.07));}
 .drop-tree.stage-open .tree-existing-orb{opacity:.95;}
 .drop-tree.stage-open .drop-tree-title{position:absolute;left:28px;bottom:42px;font-size:30px;color:#d9eadf;text-shadow:0 0 22px rgba(176,208,192,.22),0 0 18px rgba(var(--replay-rgb,255,107,191),.22);}
 .drop-tree.stage-open .drop-tree-hint{position:absolute;left:30px;bottom:24px;color:rgba(var(--replay-rgb,255,107,191),.9);text-shadow:0 0 14px rgba(var(--replay-rgb,255,107,191),.2);letter-spacing:2px;}
@@ -325,8 +325,8 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 .drop-tree-visual{position:absolute;inset:6px 12px 18px;opacity:.42;transition:opacity .35s,filter .35s;}
 .drop-tree.hot .drop-tree-visual,.drop-tree.placed .drop-tree-visual{opacity:.78;filter:drop-shadow(0 0 10px rgba(var(--replay-rgb,90,180,255),.14));}
 .drop-tree-visual svg{width:100%;height:100%;display:block;}
-.drop-tree-branch{stroke:rgba(156,128,72,.5);stroke-width:5;stroke-linecap:round;fill:none;}
-.drop-tree-twig{stroke:rgba(156,128,72,.36);stroke-width:3;stroke-linecap:round;fill:none;}
+.drop-tree-branch{stroke:rgba(156,128,72,.55);stroke-width:7;stroke-linecap:round;fill:none;}
+.drop-tree-twig{stroke:rgba(156,128,72,.42);stroke-width:4.5;stroke-linecap:round;fill:none;}
 .tree-existing-orb{fill:rgba(90,180,255,.48);filter:drop-shadow(0 0 7px rgba(90,180,255,.45));}
 .tree-existing-orb:nth-of-type(2n){fill:rgba(255,212,78,.5);filter:drop-shadow(0 0 7px rgba(255,212,78,.42));}
 .tree-existing-orb:nth-of-type(3n){fill:rgba(255,107,191,.48);filter:drop-shadow(0 0 7px rgba(255,107,191,.42));}
@@ -1177,26 +1177,26 @@ function initTree(){
   function drawBranches(){
     const{ground,trunk,Lmain,Rmain,Lfar,Lmid,Linr,Rinr,Rmid,Rfar}=SK;
     // Trunk — thick and straight, slight lean
-    seg(ground,[.500,.800],trunk, 10,.92);
+    seg(ground,[.500,.800],trunk, 14,.94);
     // Main forks — curve outward from trunk
-    seg(trunk, [.410,.538],Lmain, 6.5,.86);
-    seg(trunk, [.590,.538],Rmain, 6.5,.86);
+    seg(trunk, [.410,.538],Lmain, 9,.88);
+    seg(trunk, [.590,.538],Rmain, 9,.88);
     // Left secondary branches — each curves away differently
-    seg(Lmain, [.222,.390],Lfar,  4.0,.78);
-    seg(Lmain, [.290,.330],Lmid,  4.0,.78);
-    seg(Lmain, [.388,.392],Linr,  4.0,.78);
+    seg(Lmain, [.222,.390],Lfar,  5.8,.82);
+    seg(Lmain, [.290,.330],Lmid,  5.8,.82);
+    seg(Lmain, [.388,.392],Linr,  5.8,.82);
     // Right secondary branches
-    seg(Rmain, [.612,.392],Rinr,  4.0,.78);
-    seg(Rmain, [.710,.330],Rmid,  4.0,.78);
-    seg(Rmain, [.778,.390],Rfar,  4.0,.78);
+    seg(Rmain, [.612,.392],Rinr,  5.8,.82);
+    seg(Rmain, [.710,.330],Rmid,  5.8,.82);
+    seg(Rmain, [.778,.390],Rfar,  5.8,.82);
     // Terminal twigs → orbs: follow natural arc toward each orb tip
     const O=treeOrbs.map(o=>[o.cx/W,o.cy/H]);
-    seg(Lfar, [.108,.375],O[0],  2.2,.70); seg(Lfar, [.165,.288],O[1],  2.2,.70);
-    seg(Lmid, [.228,.172],O[2],  2.2,.70); seg(Lmid, [.310,.148],O[3],  2.2,.70);
-    seg(Linr, [.382,.310],O[4],  2.2,.70); seg(Linr, [.434,.270],O[5],  2.2,.70);
-    seg(Rinr, [.566,.270],O[6],  2.2,.70); seg(Rinr, [.618,.310],O[7],  2.2,.70);
-    seg(Rmid, [.690,.148],O[8],  2.2,.70); seg(Rmid, [.772,.172],O[9],  2.2,.70);
-    seg(Rfar, [.835,.288],O[10], 2.2,.70); seg(Rfar, [.892,.375],O[11], 2.2,.70);
+    seg(Lfar, [.108,.375],O[0],  3.4,.74); seg(Lfar, [.165,.288],O[1],  3.4,.74);
+    seg(Lmid, [.228,.172],O[2],  3.4,.74); seg(Lmid, [.310,.148],O[3],  3.4,.74);
+    seg(Linr, [.382,.310],O[4],  3.4,.74); seg(Linr, [.434,.270],O[5],  3.4,.74);
+    seg(Rinr, [.566,.270],O[6],  3.4,.74); seg(Rinr, [.618,.310],O[7],  3.4,.74);
+    seg(Rmid, [.690,.148],O[8],  3.4,.74); seg(Rmid, [.772,.172],O[9],  3.4,.74);
+    seg(Rfar, [.835,.288],O[10], 3.4,.74); seg(Rfar, [.892,.375],O[11], 3.4,.74);
     // Ground root spread — subtle shadow below trunk base
     const[gx,gy]=px(ground);
     const rootG=ctx.createRadialGradient(gx,gy,0,gx,gy,W*.14);
