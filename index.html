@@ -94,10 +94,11 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
    S1  MEMORY TREE
 ══════════════════════════════════ */
 #s1{padding:0;}
-.tree-header{padding:60px 28px 12px;display:flex;align-items:flex-start;justify-content:space-between;gap:18px;}
-.tree-title-block{text-align:right;max-width:230px;}
+.tree-header{padding:60px 28px 12px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.tree-title-block{text-align:right;width:245px;max-width:245px;padding-right:8px;flex-shrink:0;}
 .tree-h{font-family:var(--fg);font-style:italic;font-weight:300;font-size:30px;color:#d8d0f0;line-height:1;}
 .tree-s{font-size:8.5px;color:var(--muted);letter-spacing:.4px;margin-top:4px;}
+.tree-title-block .tree-hint{margin:8px 0 0;text-align:right;font-size:7.4px;letter-spacing:1px;color:rgba(176,208,192,.78);white-space:nowrap;}
 .tree-wrap{flex:1;min-height:0;position:relative;}
 #treeC{width:100%;height:100%;display:block;}
 .tree-foot{padding:12px 28px 20px;display:flex;flex-direction:column;gap:8px;}
@@ -693,7 +694,7 @@ body,.phone,button,input,textarea{
   </div>
 
   <div class="intro-actions">
-    <div class="intro-enter" onclick="go('s1')">Begin Experience →</div>
+    <div class="intro-enter" onclick="go('s1')">Begin Experience</div>
   </div>
 </div>
 
@@ -868,7 +869,7 @@ body,.phone,button,input,textarea{
   <div class="sbar"><span aria-hidden="true"></span><span style="letter-spacing:2px">●●●</span></div>
   <div class="tree-header">
     <button class="back" onclick="go('sIntro')">← Home</button>
-    <div class="tree-title-block"><div class="tree-h">Memory Tree</div><div class="tree-s">Each orb holds a memory of this place</div></div>
+    <div class="tree-title-block"><div class="tree-h">Memory Tree</div><div class="tree-s">Each orb holds a memory of this place</div><div class="tree-hint">Tap Any Orb To Replay</div></div>
   </div>
   <div class="tree-wrap"><canvas id="treeC"></canvas></div>
   <div class="tree-foot">
@@ -883,7 +884,6 @@ body,.phone,button,input,textarea{
       </div>
       <div class="rec-fab-lbl">Record voice</div>
     </div>
-    <div class="tree-hint">Tap any orb to replay a community memory first</div>
   </div>
 
   <!-- Bottom sheet for memory detail -->
@@ -991,7 +991,7 @@ body,.phone,button,input,textarea{
   </div>
 
   <div class="ana-continue" id="anaCont">
-    <button class="btn-solid" id="anaNextBtn" onclick="go('s5')" style="color:#000;">View Signature →</button>
+    <button class="btn-solid" id="anaNextBtn" onclick="go('s5')" style="color:#000;">View Signature</button>
   </div>
 </div>
 
@@ -1007,7 +1007,7 @@ body,.phone,button,input,textarea{
     <div class="sig-sv"><span class="sig-vv" id="sTone">—</span><span class="sig-ll">Tone</span></div>
   </div>
   <div class="sig-btns">
-    <button class="btn-solid" id="toTuneBtn" onclick="go('s6')">Public · Add to Memory Tree →</button>
+    <button class="btn-solid" id="toTuneBtn" onclick="go('s6')">Public · Add to Memory Tree</button>
     <button class="btn-ghost" onclick="go('s7')">Private · Raise Firework Only</button>
     <button class="btn-ghost" onclick="go('s3')">Record Again</button>
   </div>
@@ -1031,7 +1031,7 @@ body,.phone,button,input,textarea{
     </div>
   </div>
   <div class="replay-actions">
-    <button class="btn-solid" id="lBtn" onclick="go('s7')">Release Firework ↑</button>
+    <button class="btn-solid" id="lBtn" onclick="go('s7')">Release Firework</button>
     <button class="btn-ghost" onclick="go('s3')">Record Again</button>
   </div>
 </div>
