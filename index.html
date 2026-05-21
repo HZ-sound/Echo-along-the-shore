@@ -103,7 +103,7 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 .tree-foot{padding:12px 28px 20px;display:flex;flex-direction:column;gap:8px;}
 .tree-hint{text-align:center;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(100,100,150,.35);margin-bottom:2px;}
 .tree-foot{position:relative;}
-.rec-fab-float{position:absolute;bottom:calc(100% + 22px);left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:9px;z-index:5;}
+.rec-fab-float{position:absolute;bottom:calc(100% + 22px);left:52%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:9px;z-index:5;}
 .rec-fab{width:68px;height:68px;border-radius:50%;background:radial-gradient(circle at 38% 35%,rgba(255,144,210,.34),rgba(192,24,120,.2));border:1.5px solid rgba(255,107,191,.5);cursor:pointer;display:flex;align-items:center;justify-content:center;position:relative;transition:background .25s,transform .15s,box-shadow .3s;box-shadow:0 0 0 8px rgba(255,107,191,.08),0 0 28px rgba(255,107,191,.18),inset 0 0 20px rgba(255,255,255,.04);}
 .rec-fab::before,.rec-fab::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:1px solid rgba(255,107,191,.34);pointer-events:none;animation:hearPulse 2.35s ease-out infinite;}
 .rec-fab::after{inset:-22px;border-color:rgba(255,107,191,.18);animation-delay:.72s;}
@@ -316,8 +316,10 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 .drop-tree.stage-open.placed{background:radial-gradient(circle at var(--placed-x,50%) var(--placed-y,34%),rgba(var(--replay-rgb,255,107,191),.28),transparent 20%),radial-gradient(circle at 50% 22%,rgba(176,208,192,.12),transparent 42%),linear-gradient(180deg,#183080 0%,#10266f 100%);}
 .drop-tree.stage-open .drop-tree-visual{display:block;inset:88px 0 116px;opacity:1;filter:drop-shadow(0 0 18px rgba(176,208,192,.1));}
 .drop-tree.stage-open .drop-tree-visual svg{height:100%;width:100%;preserveAspectRatio:xMidYMax meet;}
-.drop-tree.stage-open .drop-tree-branch{stroke:rgba(92,74,42,.94);stroke-width:12;filter:drop-shadow(0 0 9px rgba(255,212,78,.1));}
-.drop-tree.stage-open .drop-tree-twig{stroke:rgba(92,74,42,.82);stroke-width:6.5;filter:drop-shadow(0 0 8px rgba(255,212,78,.07));}
+.drop-tree.stage-open .drop-tree-trunk{stroke:rgba(92,74,42,.96);stroke-width:22;filter:drop-shadow(0 0 11px rgba(255,212,78,.1));}
+.drop-tree.stage-open .drop-tree-main{stroke:rgba(92,74,42,.92);stroke-width:17;filter:drop-shadow(0 0 9px rgba(255,212,78,.08));}
+.drop-tree.stage-open .drop-tree-twig{stroke:rgba(92,74,42,.82);stroke-width:8.6;filter:drop-shadow(0 0 8px rgba(255,212,78,.07));}
+.drop-tree.stage-open .drop-tree-branch{stroke:rgba(92,74,42,.92);stroke-width:16.5;filter:drop-shadow(0 0 9px rgba(255,212,78,.08));}
 .drop-tree.stage-open .tree-existing-orb{opacity:.95;}
 .drop-tree.stage-open .drop-tree-title{position:absolute;left:28px;bottom:42px;font-size:30px;color:#d9eadf;text-shadow:0 0 22px rgba(176,208,192,.22),0 0 18px rgba(var(--replay-rgb,255,107,191),.22);}
 .drop-tree.stage-open .drop-tree-hint{position:absolute;left:30px;bottom:24px;color:rgba(var(--replay-rgb,255,107,191),.9);text-shadow:0 0 14px rgba(var(--replay-rgb,255,107,191),.2);letter-spacing:2px;}
@@ -325,8 +327,13 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
 .drop-tree-visual{position:absolute;inset:6px 12px 18px;opacity:.42;transition:opacity .35s,filter .35s;}
 .drop-tree.hot .drop-tree-visual,.drop-tree.placed .drop-tree-visual{opacity:.78;filter:drop-shadow(0 0 10px rgba(var(--replay-rgb,90,180,255),.14));}
 .drop-tree-visual svg{width:100%;height:100%;display:block;}
-.drop-tree-branch{stroke:rgba(156,128,72,.55);stroke-width:7;stroke-linecap:round;fill:none;}
-.drop-tree-twig{stroke:rgba(156,128,72,.42);stroke-width:4.5;stroke-linecap:round;fill:none;}
+.drop-tree-model{width:100%;height:100%;object-fit:contain;object-position:center bottom;display:block;filter:drop-shadow(0 0 18px rgba(90,180,255,.12));}
+.drop-tree-trunk{stroke:rgba(156,128,72,.62);stroke-width:13;stroke-linecap:round;fill:none;}
+.drop-tree-main{stroke:rgba(156,128,72,.56);stroke-width:10.5;stroke-linecap:round;fill:none;}
+.drop-tree-branch{stroke:rgba(156,128,72,.55);stroke-width:10.5;stroke-linecap:round;fill:none;}
+.drop-tree-twig{stroke:rgba(156,128,72,.42);stroke-width:5.8;stroke-linecap:round;fill:none;}
+.drop-tree-joint{fill:rgba(156,128,72,.58);filter:drop-shadow(0 0 6px rgba(255,212,78,.06));}
+.drop-tree.stage-open .drop-tree-joint{fill:rgba(92,74,42,.94);filter:drop-shadow(0 0 8px rgba(255,212,78,.08));}
 .tree-existing-orb{fill:rgba(90,180,255,.48);filter:drop-shadow(0 0 7px rgba(90,180,255,.45));}
 .tree-existing-orb:nth-of-type(2n){fill:rgba(255,212,78,.5);filter:drop-shadow(0 0 7px rgba(255,212,78,.42));}
 .tree-existing-orb:nth-of-type(3n){fill:rgba(255,107,191,.48);filter:drop-shadow(0 0 7px rgba(255,107,191,.42));}
@@ -1017,22 +1024,7 @@ body,.phone,button,input,textarea{
     <button class="replay-btn" id="replayBtn" type="button" onclick="toggleReplay()">Play</button>
     <div class="drop-tree" id="dropTree">
       <div class="drop-tree-visual" aria-hidden="true">
-        <svg viewBox="0 0 300 420" preserveAspectRatio="xMidYMax meet">
-          <path class="drop-tree-branch" d="M150 414 Q150 336 150 260 M150 260 Q122 214 99 191 M150 260 Q178 214 201 191"/>
-          <path class="drop-tree-twig" d="M99 191 Q68 164 44 139 M99 191 Q86 126 80 92 M99 191 Q112 158 126 143 M201 191 Q188 158 174 143 M201 191 Q214 126 220 92 M201 191 Q232 164 257 139 M44 139 Q30 158 23 181 M44 139 Q42 121 43 108 M80 92 Q66 72 63 58 M80 92 Q96 58 105 46 M126 143 Q112 128 106 120 M126 143 Q130 110 134 96 M174 143 Q170 110 166 96 M174 143 Q188 128 193 120 M220 92 Q204 58 195 46 M220 92 Q234 72 237 58 M257 139 Q258 121 257 108 M257 139 Q270 158 277 181"/>
-          <circle class="tree-existing-orb" cx="23" cy="181" r="15"/>
-          <circle class="tree-existing-orb" cx="43" cy="108" r="16"/>
-          <circle class="tree-existing-orb" cx="63" cy="58" r="17"/>
-          <circle class="tree-existing-orb" cx="105" cy="46" r="17"/>
-          <circle class="tree-existing-orb" cx="106" cy="120" r="14"/>
-          <circle class="tree-existing-orb" cx="134" cy="96" r="15"/>
-          <circle class="tree-existing-orb" cx="166" cy="96" r="15"/>
-          <circle class="tree-existing-orb" cx="193" cy="120" r="14"/>
-          <circle class="tree-existing-orb" cx="195" cy="46" r="17"/>
-          <circle class="tree-existing-orb" cx="237" cy="58" r="17"/>
-          <circle class="tree-existing-orb" cx="257" cy="108" r="16"/>
-          <circle class="tree-existing-orb" cx="277" cy="181" r="15"/>
-        </svg>
+        <img class="drop-tree-model" src="memory_tree_model_final.png" alt="" draggable="false">
       </div>
       <div class="drop-tree-title">Memory Tree</div>
       <div class="drop-tree-hint">Drag voice here</div>
@@ -1096,6 +1088,7 @@ let treeAF=null,treeOrbs=[];
 let sigAnimAF=null;
 const MAX_REC_SECONDS=20;
 const LAUNCH_SOUND_SRC='firework-for-catenary.wav';
+const TREE_MODEL_SRC='memory_tree_model_final.png';
 
 // ─── NAV ─────────────────────────────────────────────
 function go(id){
@@ -1138,106 +1131,48 @@ function initTree(){
   const wrap=c.parentElement;
   c.width=wrap.clientWidth;c.height=wrap.clientHeight;
   const W=c.width,H=c.height;
-
-  // Skeleton nodes — trunk grows from ground up, branches spread wide
-  const SK={
-    ground:[.500,.985], trunk:[.500,.620],
-    Lmain:[.330,.455],  Rmain:[.670,.455],
-    Lfar: [.145,.330],  Lmid: [.268,.220], Linr: [.420,.340],
-    Rinr: [.580,.340],  Rmid: [.732,.220], Rfar: [.855,.330],
-  };
-  const px=([fx,fy])=>[fx*W,fy*H];
-
-  // 12 orb positions — outer ones hang lower, crown ones reach high
-  const ORB_FRAC=[
-    [.076,.430],[.142,.258], // Lfar — low-hanging far left
-    [.210,.138],[.350,.110], // Lmid — upper-left crown
-    [.355,.285],[.448,.228], // Linr — inner-left mid
-    [.552,.228],[.645,.285], // Rinr — inner-right mid
-    [.650,.110],[.790,.138], // Rmid — upper-right crown
-    [.858,.258],[.924,.430], // Rfar — low-hanging far right
-  ];
-
-  treeOrbs=MEMORIES.map((m,i)=>{
-    const[fx,fy]=ORB_FRAC[i];
-    return{m,cx:fx*W,cy:fy*H,r:15+Math.random()*5,phase:Math.random()*Math.PI*2,speed:.24+Math.random()*.28};
-  });
-
-  const stars=Array.from({length:80},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*.8+.15,ph:Math.random()*Math.PI*2}));
   const ctx=c.getContext('2d');
   c.addEventListener('click',onOrbClick,{once:true});
 
-  // Draw a single quadratic bezier branch
-  function seg(from,ctrl,to,lw,alpha){
-    const[x0,y0]=px(from),[cx,cy]=px(ctrl),[x1,y1]=px(to);
-    ctx.beginPath();ctx.moveTo(x0,y0);ctx.quadraticCurveTo(cx,cy,x1,y1);
-    ctx.strokeStyle=`rgba(88,66,38,${alpha})`;ctx.lineWidth=lw;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();
+  const modelImg=window.__memoryTreeModel||(window.__memoryTreeModel=new Image());
+  if(!modelImg.src)modelImg.src=TREE_MODEL_SRC;
+  const MODEL_W=833,MODEL_H=889;
+  function modelRect(){
+    const scale=Math.min(W*.96/MODEL_W,H*.98/MODEL_H);
+    const dw=MODEL_W*scale,dh=MODEL_H*scale;
+    return{dx:(W-dw)/2,dy:Math.max(0,(H-dh)*.32),dw,dh};
   }
+  const r=modelRect();
 
-  function drawBranches(){
-    const{ground,trunk,Lmain,Rmain,Lfar,Lmid,Linr,Rinr,Rmid,Rfar}=SK;
-    // Trunk — thick and straight, slight lean
-    seg(ground,[.500,.800],trunk, 14,.94);
-    // Main forks — curve outward from trunk
-    seg(trunk, [.410,.538],Lmain, 9,.88);
-    seg(trunk, [.590,.538],Rmain, 9,.88);
-    // Left secondary branches — each curves away differently
-    seg(Lmain, [.222,.390],Lfar,  5.8,.82);
-    seg(Lmain, [.290,.330],Lmid,  5.8,.82);
-    seg(Lmain, [.388,.392],Linr,  5.8,.82);
-    // Right secondary branches
-    seg(Rmain, [.612,.392],Rinr,  5.8,.82);
-    seg(Rmain, [.710,.330],Rmid,  5.8,.82);
-    seg(Rmain, [.778,.390],Rfar,  5.8,.82);
-    // Terminal twigs → orbs: follow natural arc toward each orb tip
-    const O=treeOrbs.map(o=>[o.cx/W,o.cy/H]);
-    seg(Lfar, [.108,.375],O[0],  3.4,.74); seg(Lfar, [.165,.288],O[1],  3.4,.74);
-    seg(Lmid, [.228,.172],O[2],  3.4,.74); seg(Lmid, [.310,.148],O[3],  3.4,.74);
-    seg(Linr, [.382,.310],O[4],  3.4,.74); seg(Linr, [.434,.270],O[5],  3.4,.74);
-    seg(Rinr, [.566,.270],O[6],  3.4,.74); seg(Rinr, [.618,.310],O[7],  3.4,.74);
-    seg(Rmid, [.690,.148],O[8],  3.4,.74); seg(Rmid, [.772,.172],O[9],  3.4,.74);
-    seg(Rfar, [.835,.288],O[10], 3.4,.74); seg(Rfar, [.892,.375],O[11], 3.4,.74);
-    // Ground root spread — subtle shadow below trunk base
-    const[gx,gy]=px(ground);
-    const rootG=ctx.createRadialGradient(gx,gy,0,gx,gy,W*.14);
-    rootG.addColorStop(0,'rgba(60,42,18,.22)');rootG.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=rootG;ctx.beginPath();ctx.ellipse(gx,gy,W*.14,H*.025,0,0,Math.PI*2);ctx.fill();
-  }
+  // Click zones follow the new model's visible memory orbs.
+  const ORB_MODEL=[
+    [.205,.510],[.250,.356],[.300,.250],[.410,.235],
+    [.407,.381],[.482,.326],[.565,.340],[.635,.384],
+    [.612,.235],[.735,.250],[.785,.356],[.842,.510],
+  ];
+  treeOrbs=MEMORIES.map((m,i)=>{
+    const[nx,ny]=ORB_MODEL[i%ORB_MODEL.length];
+    return{m,cx:r.dx+nx*r.dw,cy:r.dy+ny*r.dh,r:20,phase:Math.random()*Math.PI*2,speed:.18+Math.random()*.2};
+  });
 
+  const stars=Array.from({length:80},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*.8+.15,ph:Math.random()*Math.PI*2}));
   function frame(ts){
     ctx.clearRect(0,0,W,H);
     const bg=ctx.createLinearGradient(0,0,0,H);
     bg.addColorStop(0,'#183080');bg.addColorStop(1,'#10266f');
     ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
     stars.forEach(s=>{const a=.12+.28*Math.abs(Math.sin(ts*.00028+s.ph));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(176,208,192,${a})`;ctx.fill();});
-    drawBranches();
-    treeOrbs.forEach(o=>{
-      const col=COLORS[o.m.cid];const{r,g,b}=hexRGB(col.hex);
-      const drift=Math.sin(ts*.00055*o.speed+o.phase)*3;
-      const cy=o.cy+drift;
-      // Outer glow
-      const gOuter=ctx.createRadialGradient(o.cx,cy,0,o.cx,cy,o.r*2.2);
-      gOuter.addColorStop(0,`rgba(${r},${g},${b},.22)`);gOuter.addColorStop(1,`rgba(${r},${g},${b},0)`);
-      ctx.beginPath();ctx.arc(o.cx,cy,o.r*2.2,0,Math.PI*2);ctx.fillStyle=gOuter;ctx.fill();
-      // Glass body
-      const gBody=ctx.createRadialGradient(o.cx-o.r*.3,cy-o.r*.35,o.r*.04,o.cx,cy,o.r);
-      gBody.addColorStop(0,'rgba(255,255,255,.78)');
-      gBody.addColorStop(.2,`rgba(${Math.min(255,r+50)},${Math.min(255,g+50)},${Math.min(255,b+50)},.74)`);
-      gBody.addColorStop(.6,`rgba(${r},${g},${b},.88)`);
-      gBody.addColorStop(1,`rgba(${Math.round(r*.55)},${Math.round(g*.55)},${Math.round(b*.55)},.92)`);
-      ctx.shadowBlur=16;ctx.shadowColor=col.hex;
-      ctx.beginPath();ctx.arc(o.cx,cy,o.r,0,Math.PI*2);ctx.fillStyle=gBody;ctx.fill();ctx.shadowBlur=0;
-      // Specular
-      const gHL=ctx.createRadialGradient(o.cx-o.r*.3,cy-o.r*.34,0,o.cx-o.r*.25,cy-o.r*.28,o.r*.44);
-      gHL.addColorStop(0,'rgba(255,255,255,.82)');gHL.addColorStop(1,'rgba(255,255,255,0)');
-      ctx.beginPath();ctx.arc(o.cx,cy,o.r,0,Math.PI*2);ctx.fillStyle=gHL;ctx.fill();
-      // Rim shadow
-      const gRim=ctx.createRadialGradient(o.cx+o.r*.28,cy+o.r*.3,0,o.cx,cy,o.r);
-      gRim.addColorStop(.6,'rgba(0,0,0,0)');gRim.addColorStop(1,'rgba(0,0,0,.2)');
-      ctx.beginPath();ctx.arc(o.cx,cy,o.r,0,Math.PI*2);ctx.fillStyle=gRim;ctx.fill();
-    });
+    const rr=modelRect();
+    if(modelImg.complete&&modelImg.naturalWidth){
+      ctx.save();
+      ctx.shadowBlur=22;
+      ctx.shadowColor='rgba(90,180,255,.18)';
+      ctx.drawImage(modelImg,rr.dx,rr.dy,rr.dw,rr.dh);
+      ctx.restore();
+    }
     treeAF=requestAnimationFrame(frame);
   }
+  if(!modelImg.complete)modelImg.onload=()=>{};
   treeAF=requestAnimationFrame(frame);
 }
 
