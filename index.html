@@ -26,6 +26,7 @@ body{background:var(--ui-blue);display:flex;justify-content:center;align-items:c
   box-shadow:0 0 0 1.5px rgba(176,208,192,.36),0 0 70px rgba(176,208,192,.12),0 50px 100px rgba(0,0,0,.65);}
 .notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:34px;background:#000;border-radius:0 0 22px 22px;z-index:100;}
 .sbar{position:absolute;top:0;left:0;right:0;height:50px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 8px;z-index:99;font-size:10.5px;color:rgba(176,208,192,.48);}
+.sbar span:last-child{visibility:hidden;}
 
 /* SCREENS */
 .screen{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .45s ease;background:linear-gradient(180deg,var(--ui-blue) 0%,var(--ui-blue-deep) 100%);}
@@ -683,7 +684,7 @@ body,.phone,button,input,textarea{
     <div class="intro-kicker">Interactive light installation</div>
     <div class="intro-title project-name">Echo<br><span>Along the Shore</span></div>
     <div class="intro-text">
-      <strong>Echo Along the Shore</strong> is an interactive light installation that allows you to listen to other people's stories and leave your own feelings or thoughts. You can record any sound, and the system will analyze your audio to determine the corresponding color, generating a light sphere of that color. You can then drag the light sphere into the Memory Tree to illuminate your memories.
+      First, explore the Memory Tree and listen to memories left by others. Then record your own voice and place it into the tree as a glowing light orb.
     </div>
   </div>
 
@@ -694,7 +695,7 @@ body,.phone,button,input,textarea{
   </div>
 
   <div class="intro-actions">
-    <div class="intro-enter" onclick="go('s1')">Begin Experience</div>
+    <div class="intro-enter" onclick="go('s1')">Enter Memory Tree</div>
   </div>
 </div>
 
@@ -859,8 +860,8 @@ body,.phone,button,input,textarea{
   </div>
 
   <div class="land-actions" style="padding:0 32px 52px;position:relative;z-index:1;">
-    <div class="land-enter" onclick="go('s1')">Enter Memory Tree →</div>
-    <div class="land-explore" onclick="go('s1');setTimeout(openCommunityVoice,520);">Hear a community voice →</div>
+    <div class="land-enter" onclick="go('s1')">Enter Memory Tree</div>
+    <div class="land-explore" onclick="go('s1');setTimeout(openCommunityVoice,520);">Hear a community voice</div>
   </div>
 </div>
 
@@ -869,12 +870,12 @@ body,.phone,button,input,textarea{
   <div class="sbar"><span aria-hidden="true"></span><span style="letter-spacing:2px">●●●</span></div>
   <div class="tree-header">
     <button class="back" onclick="go('sIntro')">← Home</button>
-    <div class="tree-title-block"><div class="tree-h">Memory Tree</div><div class="tree-s">Each orb holds a memory of this place</div><div class="tree-hint">Tap Any Orb To Replay</div></div>
+    <div class="tree-title-block"><div class="tree-h">Memory Tree</div><div class="tree-s">Each orb holds a memory of this place</div><div class="tree-hint">Tap an orb to hear a memory</div></div>
   </div>
   <div class="tree-wrap"><canvas id="treeC"></canvas></div>
   <div class="tree-foot">
     <div class="rec-fab-float">
-      <div class="rec-fab" onclick="go('s3')" aria-label="Record voice">
+      <div class="rec-fab" onclick="go('s3')" aria-label="Record your voice">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <rect x="9" y="2" width="6" height="12" rx="3" fill="rgba(255,107,191,.85)"/>
           <path d="M5 11a7 7 0 0 0 14 0" stroke="rgba(255,107,191,.85)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
@@ -882,7 +883,7 @@ body,.phone,button,input,textarea{
           <line x1="9" y1="22" x2="15" y2="22" stroke="rgba(255,107,191,.85)" stroke-width="1.6" stroke-linecap="round"/>
         </svg>
       </div>
-      <div class="rec-fab-lbl">Record voice</div>
+      <div class="rec-fab-lbl">Record Your Voice</div>
     </div>
   </div>
 
@@ -902,10 +903,10 @@ body,.phone,button,input,textarea{
       <div class="play-lbl" id="shPlayLbl">Listen to memory</div>
     </div>
     <div class="sheet-record-wrap">
-      <button class="sheet-record-btn" type="button" onclick="closeSheet();go('s3');" aria-label="Record your own memory">
+      <button class="sheet-record-btn" type="button" onclick="closeSheet();go('s3');" aria-label="Record your voice">
         <span class="sheet-record-square"></span>
       </button>
-      <div class="sheet-record-label">Record memory</div>
+      <div class="sheet-record-label">Record Your Voice</div>
     </div>
   </div>
 </div>
@@ -918,9 +919,9 @@ body,.phone,button,input,textarea{
   <div class="wave-wrap"><canvas id="waveC"></canvas></div>
   <div class="rec-bot">
     <div class="rtimer" id="recTimer">0:00</div>
-    <div class="rwrap"><div class="rring" id="rRing"></div><div class="rring2" id="rRing2"></div><button class="rbtn" id="recBtn" type="button" aria-label="Hold to record"><div class="rinner"></div></button></div>
-    <div class="rhint" id="recHint">Hold to record</div>
-    <div class="rmax" id="recMax">Release to finish · Max 20 seconds</div>
+    <div class="rwrap"><div class="rring" id="rRing"></div><div class="rring2" id="rRing2"></div><button class="rbtn" id="recBtn" type="button" aria-label="Tap to start recording"><div class="rinner"></div></button></div>
+    <div class="rhint" id="recHint">Tap to start recording</div>
+    <div class="rmax" id="recMax">Tap again or release to finish · Max 20 seconds</div>
   </div>
 </div>
 
@@ -975,7 +976,7 @@ body,.phone,button,input,textarea{
   <div class="sbar"><span aria-hidden="true"></span><span>●●●</span></div>
   <div class="ana-hd">
     <div class="ana-h" id="anaH">Analysing your memory…</div>
-    <div class="ana-s" id="anaS">Reading frequency signature</div>
+    <div class="ana-s" id="anaS">Reading voice analysis</div>
   </div>
   <div class="ana-wave"><canvas id="anaWaveC"></canvas></div>
   <div class="freq-section">
@@ -991,14 +992,14 @@ body,.phone,button,input,textarea{
   </div>
 
   <div class="ana-continue" id="anaCont">
-    <button class="btn-solid" id="anaNextBtn" onclick="go('s5')" style="color:#000;">View Signature</button>
+    <button class="btn-solid" id="anaNextBtn" onclick="go('s5')" style="color:#000;">View Analysis</button>
   </div>
 </div>
 
 <!-- S5 PRIVACY / PUBLIC CHOICE -->
 <div class="screen" id="s5">
   <div class="sbar"><span aria-hidden="true"></span><span>●●●</span></div>
-  <div class="sig-hd"><button class="back" onclick="go('s3')">← Re-record</button><span class="sig-tag">Privacy Choice</span></div>
+  <div class="sig-hd"><button class="back" onclick="go('s3')">← Re-record</button><span class="sig-tag">Voice Analysis</span></div>
   <div class="sig-titles"><div class="sig-h">Keep it public?</div><div class="sig-sub">Public adds the recording to the memory tree. Private raises only the firework.</div></div>
   <div class="sig-canvas-wrap"><canvas id="radC" width="236" height="236"></canvas></div>
   <div class="sig-stats">
@@ -1007,8 +1008,8 @@ body,.phone,button,input,textarea{
     <div class="sig-sv"><span class="sig-vv" id="sTone">—</span><span class="sig-ll">Tone</span></div>
   </div>
   <div class="sig-btns">
-    <button class="btn-solid" id="toTuneBtn" onclick="go('s6')">Public · Add to Memory Tree</button>
-    <button class="btn-ghost" onclick="go('s7')">Private · Raise Firework Only</button>
+    <button class="btn-solid" id="toTuneBtn" onclick="go('s6')">Add to Memory Tree</button>
+    <button class="btn-ghost" onclick="go('s7')">Keep Private · Raise Firework Only</button>
     <button class="btn-ghost" onclick="go('s3')">Record Again</button>
   </div>
 </div>
@@ -1049,7 +1050,7 @@ body,.phone,button,input,textarea{
     Where colours meet, new light is born.
   </div>
   <div class="lcat"><canvas id="launchC"></canvas></div>
-  <button class="btn-ghost" onclick="restart();return false;" style="margin:0 32px;width:calc(100% - 64px);">New memory →</button>
+  <button class="btn-ghost" onclick="restart();return false;" style="margin:0 32px;width:calc(100% - 64px);position:relative;z-index:2;">New Memory</button>
 </div>
 
 </div><!-- .phone -->
@@ -1082,11 +1083,13 @@ let waveAF=null,audioCtx=null,analyser=null,micStream=null,mediaRecorder=null,re
 let replayAudio=null,replayPlaying=false,replayAF=null;
 let recEnergy=null,launchAudio=null;
 let recTapMode=false,recPressStart=0,recPointerActive=false;
+let recStartedAt=0;
 let hueShift=0,brightness=80; // hueShift now -15 to +15
 let selMem=null,shPlaying=false,shPlayAF=null;
 let treeAF=null,treeOrbs=[];
 let sigAnimAF=null;
 const MAX_REC_SECONDS=20;
+const MIN_REC_MS=1200;
 const LAUNCH_SOUND_SRC='firework-for-catenary.wav';
 const TREE_MODEL_SRC='memory_tree_model_final.png';
 
@@ -1104,7 +1107,7 @@ function go(id){
 function restart(){
   stopReplay();
   stopLaunchSound();
-  if(isRec)stopRec(true);
+  if(isRec)stopRec(true,true);
   if(micStream){micStream.getTracks().forEach(t=>t.stop());micStream=null;}
   if(audioCtx){audioCtx.close?.();audioCtx=null;}
   mediaRecorder=null;recChunks=[];recBlob=null;recSec=0;recCid='B';
@@ -1308,10 +1311,11 @@ function toggleSheetPlay(){
 // ─── S3 RECORD ───────────────────────────────────────
 function initRec(){
   cancelAnimationFrame(treeAF);
-  isRec=false;recSec=0;recTapMode=false;recPointerActive=false;recPressStart=0;
+  isRec=false;recSec=0;recTapMode=false;recPointerActive=false;recPressStart=0;recStartedAt=0;
   document.getElementById('recTimer').textContent='0:00';document.getElementById('recTimer').classList.remove('on');
   document.getElementById('recBtn').classList.remove('on');document.getElementById('rRing').classList.remove('p');document.getElementById('rRing2').classList.remove('p');
-  document.getElementById('recHint').textContent='Tap or hold to record';
+  document.getElementById('recHint').textContent='Tap to start recording';
+  document.getElementById('recMax').textContent='Tap again or release to finish · Max 20 seconds';
   const btn=document.getElementById('recBtn');
   btn.oncontextmenu=e=>e.preventDefault();
   btn.onselectstart=e=>e.preventDefault();
@@ -1340,11 +1344,11 @@ function initRec(){
       stopRec();
     }else{
       recTapMode=true;
-      document.getElementById('recHint').textContent='Recording — tap again to finish';
+      document.getElementById('recHint').textContent='Recording... tap again to finish';
     }
   };
-  btn.onpointercancel=e=>{e.preventDefault();recPointerActive=false;if(isRec&&!recTapMode)stopRec();};
-  btn.onpointerleave=e=>{if(recPointerActive&&isRec&&!recTapMode)stopRec();recPointerActive=false;};
+  btn.onpointercancel=e=>{e.preventDefault();recPointerActive=false;if(isRec){recTapMode=true;document.getElementById('recHint').textContent='Recording... tap again to finish';}};
+  btn.onpointerleave=e=>{if(recPointerActive&&isRec){recTapMode=true;document.getElementById('recHint').textContent='Recording... tap again to finish';}recPointerActive=false;};
   btn.ontouchstart=null;btn.ontouchend=null;btn.ontouchcancel=null;
   cancelAnimationFrame(waveAF);idleWave();
 }
@@ -1358,12 +1362,13 @@ function idleWave(){
 }
 async function startRec(){
   if(isRec)return;
-  isRec=true;recBlob=null;recChunks=[];recMime='';
+  isRec=true;recBlob=null;recChunks=[];recMime='';recStartedAt=Date.now();
   resetVoiceAnalysis();
   if(recAudioUrl){URL.revokeObjectURL(recAudioUrl);recAudioUrl=null;}
   document.getElementById('recBtn').classList.add('on');document.getElementById('rRing').classList.add('p');document.getElementById('rRing2').classList.add('p');
-  document.getElementById('recTimer').classList.add('on');document.getElementById('recHint').textContent='Recording — release to finish';
-  recSec=0;updTimer();recInt=setInterval(()=>{recSec++;updTimer();if(recSec>=MAX_REC_SECONDS)stopRec();},1000);
+  document.getElementById('recTimer').classList.add('on');document.getElementById('recHint').textContent='Recording... release to finish';
+  document.getElementById('recMax').textContent='Tap again or release to finish · Max 20 seconds';
+  recSec=0;updTimer();recInt=setInterval(()=>{recSec++;updTimer();if(recSec>=MAX_REC_SECONDS)stopRec(false,true);},1000);
   try{
     const st=await navigator.mediaDevices.getUserMedia({audio:true});micStream=st;
     if(!isRec){st.getTracks().forEach(t=>t.stop());return;}
@@ -1402,8 +1407,14 @@ function liveWave(){
       ctx.fillStyle=`rgba(255,107,191,${.26+int*.62})`;ctx.fillRect(i*(bw+1.2),y,bw,Math.max(3,h));ctx.shadowBlur=0;}
     waveAF=requestAnimationFrame(f);}waveAF=requestAnimationFrame(f);
 }
-function stopRec(skipNav=false){
+function stopRec(skipNav=false,force=false){
   if(!isRec)return;
+  if(!force&&Date.now()-recStartedAt<MIN_REC_MS){
+    recTapMode=true;
+    recPointerActive=false;
+    document.getElementById('recHint').textContent='Recording... tap again to finish';
+    return;
+  }
   isRec=false;clearInterval(recInt);
   recSec=Math.max(1,recSec);
   updTimer();
@@ -1489,7 +1500,7 @@ function initAnalysis(){
 
   // Reset UI
   document.getElementById('anaH').textContent='Analysing your memory…';
-  document.getElementById('anaS').textContent='Reading frequency signature';
+  document.getElementById('anaS').textContent='Reading voice analysis';
   document.getElementById('colorReveal').classList.remove('show');
   document.getElementById('anaCont').classList.remove('show');
 
